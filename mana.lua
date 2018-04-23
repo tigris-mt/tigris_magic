@@ -78,6 +78,7 @@ tigris.player.register_effect("tigris_magic:mana_regen", {
 
         return {
             status = tex,
+            text = new.amount,
             amount = new.amount,
             time = os.time(),
             duration = new.duration + rd,
