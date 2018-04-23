@@ -1,6 +1,6 @@
 tigris.magic.register_spell("tigris_magic:test", {
     description = "Test",
-    cost = {mana = 30, hp = 2},
+    cost = {mana = 30, hp = 2, breath = true},
     emblem = "action",
     color = "#FF0",
     on_use = function(itemstack, player, pointed_thing)

@@ -5,7 +5,6 @@ local c_max = tonumber(minetest.settings:get("tigris.magic.mana_max")) or 100
 local c_regen = tonumber(minetest.settings:get("tigris.magic.mana_regen")) or 1
 
 tigris.hud.register("tigris_magic:mana", {type = "bar", description = "Mana", texture = "tigris_magic_mana"})
-tigris.hud.register("tigris_magic:mana_regen", {type = "text"})
 
 -- Access player mana.
 function m.mana(player, set, relative)
@@ -17,7 +16,6 @@ function m.mana(player, set, relative)
 
         player:get_meta():set_float("tigris_magic:mana", set)
         tigris.hud.update(player, "tigris_magic:mana", {current = set, max = m.mana_max(player)})
-        tigris.hud.update(player, "tigris_magic:mana_regen", m.mana_regen(player))
         return set
     else
         return player:get_meta():get_float("tigris_magic:mana")
@@ -34,6 +32,10 @@ function m.mana_regen(player)
     local effect = tigris.player.effect(player, "tigris_magic:mana_regen")
     if effect then
         r = r + effect.amount
+    end
+    -- If player is very hot, cancel natural regeneration.
+    if tigris.player.effect(player, "tigris_thermal:very_hot") then
+        r = r - c_regen
     end
     return r
 end
@@ -57,6 +59,7 @@ end)
 
 tigris.player.register_effect("tigris_magic:mana_regen", {
     description = "Mana Regeneration",
+    status = true,
     set = function(player, old, new)
         local rd = 0
 
@@ -68,7 +71,13 @@ tigris.player.register_effect("tigris_magic:mana_regen", {
             end
         end
 
+        local tex = "tigris_player_effect_plus.png^[colorize:#FF0:200"
+        if new.amount >= 10 then
+            tex = tex .. "^(tigris_player_effect_enhance.png^[colorize:#FF0:200)"
+        end
+
         return {
+            status = tex,
             amount = new.amount,
             time = os.time(),
             duration = new.duration + rd,
