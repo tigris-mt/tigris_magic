@@ -3,7 +3,7 @@ tigris.magic.register_potion("tigris_magic:minor_mana_potion", {
     color = "#00F",
     emblem = "defense",
     on_use = function(itemstack, player)
-        tigris.player.effect("tigris_magic:mana_regen", {amount = 3, time = 10})
+        tigris.player.effect(player, "tigris_magic:mana_regen", {amount = 3, duration = 10})
         return true
     end,
 })

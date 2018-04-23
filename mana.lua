@@ -4,7 +4,8 @@ local m = tigris.magic
 local c_max = tonumber(minetest.settings:get("tigris.magic.mana_max")) or 100
 local c_regen = tonumber(minetest.settings:get("tigris.magic.mana_regen")) or 1
 
-tigris.hud.register("m:mana", {type = "text"})
+tigris.hud.register("tigris_magic:mana", {type = "text"})
+tigris.hud.register("tigris_magic:mana_regen", {type = "text"})
 
 -- Access player mana.
 function m.mana(player, set, relative)
@@ -14,11 +15,12 @@ function m.mana(player, set, relative)
         end
         set = math.max(0, math.min(set, m.mana_max(player)))
 
-        player:get_meta():set_float("m:mana", set)
-        tigris.hud.update("m:mana", player, set, m.mana_max(player))
+        player:get_meta():set_float("tigris_magic:mana", set)
+        tigris.hud.update("tigris_magic:mana", player, set, m.mana_max(player))
+        tigris.hud.update("tigris_magic:mana_regen", player, m.mana_regen(player))
         return set
     else
-        return player:get_meta():get_float("m:mana")
+        return player:get_meta():get_float("tigris_magic:mana")
     end
 end
 
@@ -28,7 +30,12 @@ function m.mana_max(player)
 end
 
 function m.mana_regen(player)
-    return c_regen
+    local r = c_regen
+    local effect = tigris.player.effect(player, "tigris_magic:mana_regen")
+    if effect then
+        r = r + effect.amount
+    end
+    return r
 end
 
 -- Regenerate mana.
@@ -47,3 +54,24 @@ end)
 minetest.register_on_joinplayer(function(player)
     m.mana(player, 0, true)
 end)
+
+tigris.player.register_effect("tigris_magic:mana_regen", {
+    description = "Mana Regeneration",
+    set = function(player, old, new)
+        local rd = 0
+
+        if old then
+            local remaining = (old.time + old.duration) - os.time()
+            if remaining > 0 then
+                -- Increase duration to somewhat stack potions (but not increase regen-per-second due to it).
+                rd = (old.amount / new.amount) * remaining
+            end
+        end
+
+        return {
+            amount = new.amount,
+            time = os.time(),
+            duration = new.duration + rd,
+        }
+    end,
+})
