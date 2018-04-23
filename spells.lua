@@ -12,11 +12,7 @@ do_cost: nil or function(player, cost)
 function m.register_spell(name, def)
     local desc = def.description
     for k,v in pairs(def.cost) do
-        if type(v) == "number" then
-            desc = desc .. " (" .. k .. ": " .. v .. ")"
-        else
-            desc = desc .. " (" .. k .. ")"
-        end
+        desc = desc .. " (" .. k .. ": " .. v .. ")"
     end
 
     local do_cost = def.do_cost or (function(player, cost)
@@ -34,9 +30,11 @@ function m.register_spell(name, def)
                     return false
                 end
                 d[k] = function() player:set_hp(player:get_hp() - v) end
-            -- Spell consumes all user's breath (significant vocal component).
             elseif k == "breath" then
-                d[k] = function() player:set_breath(0) end
+                if player:get_breath() <= v then
+                    return false
+                end
+                d[k] = function() player:set_breath(player:get_breath() - v) end
             else
                 error("Unknown cost: " .. k)
             end
