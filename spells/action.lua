@@ -22,11 +22,11 @@ tigris.player.register_effect("tigris_magic:lesser_antigravity", {
     end,
 
     apply = function(player, e)
-        player:set_physics_override({gravity = 0.1})
+        tigris.player.property("tigris_magic:lesser_antigravity", "gravity", "multiplier", 0.1)
     end,
 
     stop = function(player, e)
-        player:set_physics_override({gravity = 1})
+        tigris.player.property("tigris_magic:lesser_antigravity", "gravity", "multiplier", 1)
     end,
 })
 
