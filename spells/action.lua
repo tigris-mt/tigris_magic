@@ -17,8 +17,7 @@ tigris.player.register_effect("tigris_magic:lesser_antigravity", {
 
     set = function(player, old, new)
         return {
-            time = os.time(),
-            duration = math.min(10, (old and math.max(0, ((old.time + old.duration) - os.time())) or 0) + new.duration)
+            remaining = new.duration + math.min(2, old and old.remaining or 0),
         }
     end,
 

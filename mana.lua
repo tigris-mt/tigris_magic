@@ -29,10 +29,6 @@ end
 
 function m.mana_regen(player)
     local r = c_regen
-    local effect = tigris.player.effect(player, "tigris_magic:mana_regen")
-    if effect then
-        r = r + effect.amount
-    end
     -- If player is very hot, cancel natural regeneration.
     if tigris.player.effect(player, "tigris_thermal:very_hot") then
         r = r - c_regen
@@ -61,14 +57,10 @@ tigris.player.register_effect("tigris_magic:mana_regen", {
     description = "Mana Regeneration",
     status = true,
     set = function(player, old, new)
-        local rd = 0
+        local remaining = 0
 
         if old then
-            local remaining = (old.time + old.duration) - os.time()
-            if remaining > 0 then
-                -- Increase duration to somewhat stack potions (but not increase regen-per-second due to it).
-                rd = (old.amount / new.amount) * remaining
-            end
+            remaining = old.remaining
         end
 
         local tex = "tigris_player_effect_plus.png^[colorize:#FF0:200"
@@ -76,12 +68,18 @@ tigris.player.register_effect("tigris_magic:mana_regen", {
             tex = tex .. "^(tigris_player_effect_enhance.png^[colorize:#FF0:200)"
         end
 
+        local d = (remaining + new.duration)
+        local a = new.amount * (new.duration / d) + (old and old.amount or 0) * (remaining / d)
+
         return {
             status = tex,
-            text = new.amount,
-            amount = new.amount,
-            time = os.time(),
-            duration = new.duration + rd,
+            text = math.floor(a),
+            amount = a,
+            remaining = d,
         }
+    end,
+
+    apply = function(player, e, dtime)
+        m.mana(player, e.amount * dtime, true)
     end,
 })
