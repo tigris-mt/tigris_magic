@@ -67,3 +67,4 @@ function m.register_spell(name, def)
 end
 
 tigris.include("spells/action.lua")
+tigris.include("spells/attack.lua")
