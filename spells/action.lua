@@ -30,3 +30,9 @@ tigris.player.register_effect("tigris_magic:lesser_antigravity", {
         player:set_physics_override({gravity = 1})
     end,
 })
+
+minetest.register_craft({
+    output = "tigris_magic:lesser_antigravity",
+    type = "shapeless",
+    recipe = {"tigris_magic:force_essence", "group:leaves", "default:torch"},
+})
