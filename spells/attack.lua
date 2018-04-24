@@ -26,10 +26,10 @@ tigris.register_projectile("tigris_magic:stone_arrow_projectile", {
 })
 
 minetest.register_craft({
-    output = "tigris_magic:stone_arrow 4",
+    output = "tigris_magic:stone_arrow 6",
     recipe = {
         {"group:stone", "group:stone", "group:stone"},
         {"group:stone", "tigris_magic:earth_essence", ""},
-        {"group:stone", "", "group:stone"},
+        {"group:stone", "", "tigris_magic:force_essence"},
     },
 })
