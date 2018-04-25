@@ -1,4 +1,5 @@
 -- Blood and mana are the simplest essences. Mostly above-ground.
+-- Body requires materials harvested from mobs.
 -- Earth and force are for more complicated spells and potions. Mostly below-ground.
 -- Twisted is for the strongest effects.
 for _,def in ipairs({
@@ -8,6 +9,8 @@ for _,def in ipairs({
     -- Dandelion: yellow + strength, Tree: life of the earth, Torch: energy.
     {name = "mana", desc = "Mana", color = "#FF0",
         recipe = {"flowers:dandelion_yellow", "group:tree", "default:torch"}},
+    {name = "body", desc = "Body", color = "#FAA",
+        recipe = {"mobs:meat_raw", "tigris_mobs:bone", "tigris_mobs:eye"}},
     -- Black tulip: black, Coal block: dead + solidified, Obsidian shard: solid.
     {name = "earth", desc = "Earth", color = "#772",
         recipe = {"flowers:tulip_black", "default:coalblock", "default:obsidian_shard"}},
