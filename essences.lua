@@ -17,7 +17,7 @@ for _,def in ipairs({
     -- Geranium: blue, Mese crystal: power, Copper ingot: conduction.
     {name = "force", desc = "Force", color = "#00F",
         recipe = {"flowers:geranium", "default:mese_crystal_fragment", "default:copper_ingot"}},
-    -- Combine all essences with concentrated mese.
+    -- Combine four root essences with concentrated mese.
     {name = "twisted", desc = "Twisted", color = "#F0F",
         recipe = {"tigris_magic:blood_essence", "tigris_magic:mana_essence", "tigris_magic:earth_essence", "tigris_magic:force_essence",
             "default:mese"}},
