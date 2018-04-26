@@ -63,6 +63,11 @@ function m.register_spell(name, def)
             return itemstack
         end,
     }
+
+    if def.overlay then
+        item.inventory_image = item.inventory_image .. "^" .. def.overlay
+    end
+
     minetest.register_craftitem(name, item)
 end
 

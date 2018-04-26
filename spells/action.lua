@@ -3,6 +3,7 @@ tigris.magic.register_spell("tigris_magic:lesser_antigravity", {
     cost = {mana = 50},
     emblem = "action",
     color = "#303",
+    overlay = "tigris_magic_antigravity.png",
     on_use = function(itemstack, player, pointed_thing)
         tigris.player.effect(player, "tigris_magic:lesser_antigravity", {
             duration = 5,

@@ -14,6 +14,10 @@ function tigris.magic.register_potion(name, def)
         def.emblem and ("^tigris_magic_emblem_"..def.emblem..".png") or "")
     local vt = def.strong and s or v
 
+    if def.overlay then
+        image = image .. "^" .. def.overlay
+    end
+
     local node = {
         description = def.description,
         drawtype = "plantlike",
