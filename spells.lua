@@ -73,3 +73,4 @@ end
 
 tigris.include("spells/action.lua")
 tigris.include("spells/attack.lua")
+tigris.include("spells/defense.lua")
