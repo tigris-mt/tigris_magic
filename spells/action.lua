@@ -1,15 +1,17 @@
 tigris.magic.register_spell("tigris_magic:earthly_desolation", {
     description = "Earthly Desolation",
     cost = {mana = 30, hp = 3},
-    emblem = "attack",
+    emblem = "action",
     overlay = "tigris_magic_mana_icon.png",
     color = "#442",
     on_use = function(itemstack, player, pointed_thing)
         local search = vector.new(3, 3, 3)
         local start = vector.subtract(player:getpos(), search)
         local last = vector.add(player:getpos(), search)
-        for _,pos in ipairs(minetest.find_nodes_in_area(start, last, {"group:stone", "default:gravel"})) do
+        for _,pos in ipairs(minetest.find_nodes_in_area(start, last, {"group:stone", "default:gravel", "group:soil", "group:dirt", "group:sand"})) do
+            if not minetest.is_protected(pos, player:get_player_name()) then
                 minetest.remove_node(pos)
+            end
         end
         return true
     end,
@@ -21,6 +23,81 @@ minetest.register_craft({
         {"tigris_magic:earth_essence", "tigris_mobs:fang", "tigris_magic:earth_essence"},
         {"default:obsidian", "tigris_magic:earth_essence", "default:obsidian"},
         {"tigris_magic:force_essence", "tigris_magic:force_essence", "tigris_magic:force_essence"},
+    },
+})
+
+tigris.magic.register_spell("tigris_magic:free_subservient", {
+    description = "Free Subservient",
+    cost = {mana = 5},
+    emblem = "action",
+    overlay = "tigris_mobs_bone.png",
+    color = "#742",
+    on_use = function(itemstack, player, pointed_thing)
+        if pointed_thing.type == "object" then
+            local obj = pointed_thing.ref
+            if obj:is_player() then
+                return
+            end
+            local ent = obj:get_luaentity()
+            if ent.tigris_mob and ent.faction == tigris.player.faction(player:get_player_name()) then
+                ent.faction = nil
+                return true
+            end
+        end
+    end,
+})
+
+minetest.register_craft({
+    output = "tigris_magic:free_subservient",
+    recipe = {
+        {"tigris_magic:mana_essence", "tigris_mobs:eye", "group:stick"},
+    },
+})
+
+tigris.magic.register_spell("tigris_magic:freeze", {
+    description = "Freeze",
+    cost = {mana = 15},
+    emblem = "action",
+    color = "#99F",
+    on_use = function(itemstack, player, pointed_thing)
+        tigris.create_projectile("tigris_magic:freeze_projectile", {
+            pos = vector.add(player:getpos(), vector.new(0, 1.4, 0)),
+            velocity = vector.multiply(player:get_look_dir(), 30),
+            gravity = 0,
+            owner = player:get_player_name(),
+            owner_object = player,
+        })
+        return true
+    end,
+})
+
+tigris.register_projectile("tigris_magic:freeze_projectile", {
+    texture = "default_ice.png",
+    on_liquid_hit = function(self, pos)
+        local search = vector.new(2, 2, 2)
+        local start = vector.subtract(pos, search)
+        local last = vector.add(pos, search)
+        for _,pos in ipairs(minetest.find_nodes_in_area(start, last, {"group:water"})) do
+            if not minetest.is_protected(pos, self._owner) and math.random(1, 100) < 75 then
+                minetest.set_node(pos, {name = "default:ice"})
+            end
+        end
+        return true
+    end,
+    on_node_hit = function(self, pos)
+        return true
+    end,
+    on_entity_hit = function(self, obj)
+        tigris.damage.apply(obj, {cold = 2}, self._owner_object)
+        return true
+    end,
+})
+
+minetest.register_craft({
+    output = "tigris_magic:freeze",
+    recipe = {
+        {"tigris_mobs:water_lung", "default:ice", "tigris_mobs:water_lung"},
+        {"tigris_magic:mana_essence", "tigris_magic:force_essence", "tigris_magic:mana_essence"},
     },
 })
 
