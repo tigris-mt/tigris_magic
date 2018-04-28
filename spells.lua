@@ -71,7 +71,4 @@ function m.register_spell(name, def)
     minetest.register_craftitem(name, item)
 end
 
-local mp = minetest.get_modpath(minetest.get_current_modname()) .. "/spells"
-for _,entry in ipairs(minetest.get_dir_list(mp, false)) do
-    tigris.include("spells/" .. entry)
-end
+tigris.include_dir("spells")
