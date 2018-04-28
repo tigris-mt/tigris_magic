@@ -43,4 +43,3 @@ minetest.register_craft({
         {"tigris_magic:freeze", "", "tigris_magic:freeze"},
     },
 })
-

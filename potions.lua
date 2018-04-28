@@ -93,4 +93,7 @@ minetest.register_craft({
     cooktime = 5,
 })
 
-tigris.include("potions/defense.lua")
+local mp = minetest.get_modpath(minetest.get_current_modname()) .. "/potions"
+for _,entry in ipairs(minetest.get_dir_list(mp, false)) do
+    tigris.include("potions/" .. entry)
+end
