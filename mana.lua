@@ -29,10 +29,6 @@ end
 
 function m.mana_regen(player)
     local r = c_regen
-    -- If player is very hot, cancel natural regeneration.
-    if tigris.player.effect(player, "tigris_thermal:very_hot") then
-        r = r - c_regen
-    end
     return r
 end
 
