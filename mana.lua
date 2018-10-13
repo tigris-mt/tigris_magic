@@ -48,34 +48,3 @@ end)
 minetest.register_on_joinplayer(function(player)
     m.mana(player, 0, true)
 end)
-
-tigris.player.register_effect("tigris_magic:mana_regen", {
-    description = "Mana Regeneration",
-    status = true,
-    set = function(player, old, new)
-        local remaining = 0
-
-        if old then
-            remaining = old.remaining
-        end
-
-        local tex = "tigris_player_effect_plus.png^[colorize:#FF0:200"
-        if new.amount >= 10 then
-            tex = tex .. "^(tigris_player_effect_enhance.png^[colorize:#FF0:200)"
-        end
-
-        local d = (remaining + new.duration)
-        local a = new.amount * (new.duration / d) + (old and old.amount or 0) * (remaining / d)
-
-        return {
-            status = tex,
-            text = math.floor(a),
-            amount = a,
-            remaining = d,
-        }
-    end,
-
-    apply = function(player, e, dtime)
-        m.mana(player, e.amount * dtime, true)
-    end,
-})

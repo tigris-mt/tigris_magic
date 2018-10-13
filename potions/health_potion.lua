@@ -3,7 +3,7 @@ tigris.magic.register_potion("tigris_magic:health_potion", {
     color = "#F00",
     emblem = "defense",
     on_use = function(itemstack, player)
-        tigris.player.effect(player, "tigris_player:health_regen", {amount = 2, duration = 6})
+        player:set_hp(player:get_hp() + 7)
         return true
     end,
 })

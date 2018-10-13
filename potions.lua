@@ -35,7 +35,11 @@ function tigris.magic.register_potion(name, def)
         sounds = default.node_sound_glass_defaults(),
 
         on_use = def.on_use and function(itemstack, player, pointed_thing)
+            if playereffects.has_effect_type(player:get_player_name(), "tigris_magic:drinking") then
+                return itemstack
+            end
             if def.on_use(itemstack, player, pointed_thing) then
+                playereffects.apply_effect_type("tigris_magic:drinking", def.drink_time or 5, player)
                 if player:get_inventory():room_for_item("main", vt) then
                     player:get_inventory():add_item("main", vt)
                 else
@@ -54,6 +58,8 @@ tigris.magic.register_potion("tigris_magic:water_bottle", {
     description = "Bottle of Water",
     color = "#02A",
 })
+
+playereffects.register_effect_type("tigris_magic:drinking", "Drinking", minetest.registered_items["tigris_magic:water_bottle"].inventory_image, {"tigris_magic:drinking"}, function() end, function() end)
 
 minetest.register_craft({
     output = "tigris_magic:water_bottle 8",
