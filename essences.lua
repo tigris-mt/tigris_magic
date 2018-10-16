@@ -28,9 +28,40 @@ for _,def in ipairs({
         groups = {essence = 1},
     })
 
+    minetest.register_node("tigris_magic:"..def.name.."_in_stone", {
+        description = def.desc .. " Essence in Stone",
+        tiles = {"default_stone.png^(tigris_magic_mineral.png^[colorize:"..def.color..":"..tostring(0xCC)..")"},
+        groups = {cracky = 2},
+        drop = "tigris_magic:" .. def.name .. "_essence",
+        sounds = default.node_sound_stone_defaults(),
+    })
+
     minetest.register_craft({
         output = "tigris_magic:" .. def.name .. "_essence",
         type = "shapeless",
         recipe = def.recipe,
     })
 end
+
+local function r(name, ymax, ymin, cube)
+    minetest.register_ore({
+        ore_type       = "scatter",
+        ore            = "tigris_magic:" .. name .. "_in_stone",
+        wherein        = "default:stone",
+        clust_scarcity = cube * cube * cube,
+        clust_num_ores = 5,
+        clust_size     = 3,
+        y_max          = ymax,
+        y_min          = ymin,
+    })
+end
+
+r("blood", tigris.world_limits.max.y, -500, 17)
+r("mana", tigris.world_limits.max.y, -500, 17)
+r("earth", -400, tigris.world_limits.min.y, 18)
+r("force", -400, tigris.world_limits.min.y, 18)
+
+r("blood", tigris.world_limits.max.y, tigris.world_limits.min.y, 38)
+r("mana", tigris.world_limits.max.y, tigris.world_limits.min.y, 38)
+r("earth", tigris.world_limits.max.y, tigris.world_limits.min.y, 39)
+r("force", tigris.world_limits.max.y, tigris.world_limits.min.y, 39)

@@ -11,7 +11,7 @@ tigris.magic.register_spell("tigris_magic:free_subservient", {
                 return
             end
             local ent = obj:get_luaentity()
-            if ent.tigris_mob and ent.faction == tigris.player.faction(player:get_player_name()) then
+            if ent.tigris_mob and ent.faction == tigris.player_faction(player:get_player_name()) then
                 ent.faction = nil
                 return true
             end
