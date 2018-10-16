@@ -25,4 +25,3 @@ minetest.register_craft({
         {"tigris_magic:mana_essence", "tigris_mobs:eye", "group:stick"},
     },
 })
-
