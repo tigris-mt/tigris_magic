@@ -75,3 +75,5 @@ minetest.register_craft{
         {"tigris_magic:mana_essence", "tigris_magic:twisted_essence", "tigris_magic:mana_essence"},
     },
 }
+
+tigris.include("breath_amulet.lua")
