@@ -19,6 +19,7 @@ jewelry.register_action("mana", {
 
 jewelry.register("tigris_magic:solar_shield_amulet", {
     description = "Amulet of Solar Shield",
+    longdesc = "Protects the user from all sun damage. Reduces heat damage.",
     image = "jewelry_amulet.png^tigris_magic_solar_shield.png",
     group = "amulet",
 
@@ -40,6 +41,7 @@ minetest.register_craft{
 
 jewelry.register("tigris_magic:speed_anklet", {
     description = "Anklet of Speed",
+    longdesc = "Increases the user's speed and slightly increases jumping ability.",
     image = "jewelry_anklet.png^tigris_magic_speed.png",
     group = "anklet",
 
@@ -57,6 +59,7 @@ minetest.register_craft{
 
 jewelry.register("tigris_magic:mana_boost_bracelet", {
     description = "Bracelet of Mana Boost",
+    longdesc = "Increases the user's mana pool and regeneration.",
     image = "jewelry_bracelet.png^tigris_magic_mana_icon.png",
     group = "bracelet",
 
