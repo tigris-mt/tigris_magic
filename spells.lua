@@ -1,14 +1,5 @@
 local m = tigris.magic
 
---[[
-description: Item description.
-cost: Cost table. {mana = 12}
-emblem: action, attack, defense
-color: #FFF
-groups: {spell = 1} or nil
-on_use: function(itemstack, player, pointed_thing)
-do_cost: nil or function(player, cost)
---]]
 function m.register_spell(name, def)
     local desc = def.description
     for k,v in pairs(def.cost) do

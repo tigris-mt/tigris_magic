@@ -1,10 +1,3 @@
---[[
-description: Description
-color: #FFF
-emblem: nil or action, attack, defense
-on_use: nil or function(itemstack, player, pointed_thing)
-strong: nil or true
---]]
 local v = "vessels:glass_bottle"
 local s = "vessels:steel_bottle"
 
