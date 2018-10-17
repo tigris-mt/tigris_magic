@@ -17,9 +17,9 @@ jewelry.register_action("mana", {
     end,
 })
 
-jewelry.register("jewelry:solar_shield_amulet", {
+jewelry.register("tigris_magic:solar_shield_amulet", {
     description = "Amulet of Solar Shield",
-    image = "jewelry_amulet.png^jewelry_solar_shield.png",
+    image = "jewelry_amulet.png^tigris_magic_solar_shield.png",
     group = "amulet",
 
     absorb = {"sun"},
@@ -31,16 +31,16 @@ jewelry.register("jewelry:solar_shield_amulet", {
 })
 
 minetest.register_craft{
-    output = "jewelry:solar_shield_amulet",
+    output = "tigris_magic:solar_shield_amulet",
     recipe = {
         {"group:coal", "default:obsidian", "group:coal"},
         {"tigris_magic:mana_essence", "jewelry:amulet_base", "tigris_magic:force_essence"},
     },
 }
 
-jewelry.register("jewelry:speed_anklet", {
+jewelry.register("tigris_magic:speed_anklet", {
     description = "Anklet of Speed",
-    image = "jewelry_anklet.png^jewelry_speed.png",
+    image = "jewelry_anklet.png^tigris_magic_speed.png",
     group = "anklet",
 
     effects = {speed = 1.5, jump = 1.1},
@@ -48,14 +48,14 @@ jewelry.register("jewelry:speed_anklet", {
 })
 
 minetest.register_craft{
-    output = "jewelry:speed_anklet",
+    output = "tigris_magic:speed_anklet",
     recipe = {
         {"default:ice", "tigris_magic:blood_essence", "default:ice"},
         {"tigris_magic:force_essence", "jewelry:anklet_base", "tigris_magic:force_essence"},
     },
 }
 
-jewelry.register("jewelry:mana_boost_bracelet", {
+jewelry.register("tigris_magic:mana_boost_bracelet", {
     description = "Bracelet of Mana Boost",
     image = "jewelry_bracelet.png^tigris_magic_mana_icon.png",
     group = "bracelet",
@@ -65,7 +65,7 @@ jewelry.register("jewelry:mana_boost_bracelet", {
 })
 
 minetest.register_craft{
-    output = "jewelry:mana_boost_bracelet",
+    output = "tigris_magic:mana_boost_bracelet",
     recipe = {
         {"tigris_magic:mana_essence", "tigris_magic:twisted_essence", "tigris_magic:mana_essence"},
         {"tigris_magic:mana_essence", "jewelry:bracelet_base", "tigris_magic:mana_essence"},
