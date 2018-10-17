@@ -1,0 +1,3 @@
+tigris.magic.mana_max (Default maximum mana) int 100
+
+tigris.magic.mana_regen (Default mana regen per second) float 1
