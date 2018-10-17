@@ -1,5 +1,6 @@
 tigris.magic.register_spell("tigris_magic:lesser_antigravity", {
     description = "Lesser Antigravity",
+    longdesc = "Greatly reduces the effects of gravity for several seconds.",
     cost = {mana = 50},
     emblem = "action",
     color = "#303",

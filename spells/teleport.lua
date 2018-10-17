@@ -4,6 +4,7 @@ end
 
 tigris.magic.register_spell("tigris_magic:teleport", {
     description = "Short-Range Teleport",
+    longdesc = "Launch a projectile that will warp you to its landing position.",
     cost = {mana = 35, hp = 4},
     emblem = "action",
     color = "#CCF",

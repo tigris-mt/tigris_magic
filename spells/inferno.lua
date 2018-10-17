@@ -1,5 +1,6 @@
 tigris.magic.register_spell("tigris_magic:inferno", {
     description = "Inferno",
+    longdesc = "Burn flammable nodes in a wide area, damage nearby enemies with large heat damage.",
     cost = {mana = 75, hp = 10},
     emblem = "attack",
     color = "#F00",

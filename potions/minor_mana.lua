@@ -1,5 +1,6 @@
 tigris.magic.register_potion("tigris_magic:minor_mana_potion", {
     description = "Minor Mana Restoration Potion",
+    longdesc = "Restores some mana",
     color = "#AA0",
     emblem = "defense",
     on_use = function(itemstack, player)

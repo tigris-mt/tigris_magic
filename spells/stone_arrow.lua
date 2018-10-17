@@ -1,5 +1,6 @@
 tigris.magic.register_spell("tigris_magic:stone_arrow", {
     description = "Stone Arrow",
+    longdesc = "Launches a projectile that deals low fleshy damage.",
     cost = {mana = 10},
     emblem = "attack",
     color = "#442",

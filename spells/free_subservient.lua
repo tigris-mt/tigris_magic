@@ -1,5 +1,7 @@
 tigris.magic.register_spell("tigris_magic:free_subservient", {
     description = "Free Subservient",
+    longdesc = "Revokes a claim by you or your faction on a mob.",
+    usagehelp = "Use on a mob claimed by you or your faction.",
     cost = {mana = 5},
     emblem = "action",
     overlay = "tigris_mobs_bone.png",

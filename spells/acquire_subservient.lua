@@ -1,5 +1,7 @@
 tigris.magic.register_spell("tigris_magic:acquire_subservient", {
     description = "Acquire Subservient",
+    longdesc = "Claim a mob for yourself or for your faction.",
+    usagehelp = "Use on a tame mob.",
     cost = {mana = 15},
     emblem = "action",
     overlay = "tigris_mobs_eye.png",
@@ -31,6 +33,8 @@ minetest.register_craft({
 
 tigris.magic.register_spell("tigris_magic:retrieve_subservient", {
     description = "Retrieve Subservient",
+    longdesc = "Retrieve a mob to your inventory.",
+    usagehelp = "Use on a mob claimed by you or your faction.",
     cost = {mana = 30},
     emblem = "action",
     overlay = "tigris_mobs_cursed_brain.png",

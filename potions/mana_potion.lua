@@ -1,5 +1,6 @@
 tigris.magic.register_potion("tigris_magic:mana_potion", {
     description = "Mana Restoration Potion",
+    longdesc = "Restores a large amount of mana.",
     color = "#FF0",
     emblem = "defense",
     on_use = function(itemstack, player)

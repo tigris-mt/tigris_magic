@@ -1,5 +1,6 @@
 tigris.magic.register_potion("tigris_magic:health_potion", {
     description = "Health Restoration Potion",
+    longdesc = "Restores a large amount of health.",
     color = "#F00",
     emblem = "defense",
     on_use = function(itemstack, player)

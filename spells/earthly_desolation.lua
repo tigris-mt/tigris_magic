@@ -1,5 +1,6 @@
 tigris.magic.register_spell("tigris_magic:earthly_desolation", {
     description = "Earthly Desolation",
+    longdesc = "Destroys all earthy (stone, gravel, soil, dirt, sand) nodes in a small area around the caster.",
     cost = {mana = 30, hp = 3},
     emblem = "action",
     overlay = "tigris_magic_mana_icon.png",

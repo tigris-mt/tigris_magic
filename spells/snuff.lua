@@ -1,5 +1,6 @@
 tigris.magic.register_spell("tigris_magic:snuff", {
     description = "Snuff",
+    longdesc = "Launches a projectile that puts out fire with water.",
     cost = {mana = 30},
     emblem = "defense",
     color = "#70F",

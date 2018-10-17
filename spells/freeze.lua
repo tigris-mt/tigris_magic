@@ -1,5 +1,6 @@
 tigris.magic.register_spell("tigris_magic:freeze", {
     description = "Freeze",
+    longdesc = "Launches a projectile that freezes water and deals low cold damage.",
     cost = {mana = 15},
     emblem = "attack",
     color = "#99F",

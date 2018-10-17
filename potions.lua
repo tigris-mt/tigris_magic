@@ -34,6 +34,9 @@ function tigris.magic.register_potion(name, def)
         groups = {vessel = 1, dig_immediate = 3, attached_node = 1},
         sounds = default.node_sound_glass_defaults(),
 
+        _doc_items_longdesc = def.longdesc,
+        _doc_items_usagehelp = def.usagehelp or "Use the potion to drink it.",
+
         on_use = def.on_use and function(itemstack, player, pointed_thing)
             if playereffects.has_effect_type(player:get_player_name(), "tigris_magic:drinking") then
                 return itemstack

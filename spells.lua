@@ -53,6 +53,9 @@ function m.register_spell(name, def)
         groups = def.groups or {spell = 1},
         original = def,
 
+        _doc_items_longdesc = def.longdesc,
+        _doc_items_usagehelp = def.usagehelp or "Use the spell to cast it.",
+
         on_use = function(itemstack, player, pointed_thing)
             if not do_cost(player, def.cost) then
                 return
