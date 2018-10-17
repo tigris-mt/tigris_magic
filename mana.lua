@@ -24,13 +24,48 @@ end
 
 -- Maximum player mana.
 function m.mana_max(player)
-    return c_max
+    return player:get_meta():get_float("tigris_magic:mana_max")
 end
 
+m.mana_max_monoid = player_monoids.make_monoid{
+    combine = function(a, b)
+        return a * b
+    end,
+    fold = function(tab)
+        local r = c_max
+        for _,v in pairs(tab) do
+            r = r * v
+        end
+        return r
+    end,
+    identity = c_max,
+    apply = function(n, player)
+        player:get_meta():set_float("tigris_magic:mana_max", n)
+    end,
+    on_change = function() return end,
+}
+
 function m.mana_regen(player)
-    local r = c_regen
-    return r
+    return player:get_meta():get_float("tigris_magic:mana_regen")
 end
+
+m.mana_regen_monoid = player_monoids.make_monoid{
+    combine = function(a, b)
+        return a * b
+    end,
+    fold = function(tab)
+        local r = c_regen
+        for _,v in pairs(tab) do
+            r = r * v
+        end
+        return r
+    end,
+    identity = c_regen,
+    apply = function(n, player)
+        player:get_meta():set_float("tigris_magic:mana_regen", n)
+    end,
+    on_change = function() return end,
+}
 
 -- Regenerate mana.
 local timer = 0
