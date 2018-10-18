@@ -39,7 +39,7 @@ jewelry.register("tigris_magic:breath_amulet", {
 minetest.register_craft{
     output = "tigris_magic:breath_amulet",
     recipe = {
-        {"default:coral_brown", "default:sand_with_kelp", "default:coral_orange"},
+        {"default:coral_skeleton", "default:sand_with_kelp", "default:coral_skeleton"},
         {"tigris_magic:blood_essence", "jewelry:amulet_base", "tigris_magic:blood_essence"},
     },
 }
