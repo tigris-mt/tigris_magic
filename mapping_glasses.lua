@@ -3,7 +3,7 @@ if not minetest.get_modpath("map") then
 end
 
 jewelry.register("tigris_magic:mapping_glasses", {
-    description = "Glasses of Mapping",
+    description = "Glasses of Mapping\nUse with 'Minimap' key",
     longdesc = "Enables the user to access the minimap.",
     image = "map_mapping_kit.png^jewelry_glasses.png",
     group = "glasses",
