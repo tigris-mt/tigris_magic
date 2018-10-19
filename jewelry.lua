@@ -77,3 +77,4 @@ minetest.register_craft{
 }
 
 tigris.include("breath_amulet.lua")
+tigris.include("mapping_glasses.lua")
