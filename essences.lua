@@ -49,17 +49,17 @@ local function r(name, ymax, ymin, cube)
         ore            = "tigris_magic:" .. name .. "_in_stone",
         wherein        = "default:stone",
         clust_scarcity = cube * cube * cube,
-        clust_num_ores = 5,
-        clust_size     = 3,
+        clust_num_ores = 3,
+        clust_size     = 2,
         y_max          = ymax,
         y_min          = ymin,
     })
 end
 
-r("blood", tigris.world_limits.max.y, -500, 17)
-r("mana", tigris.world_limits.max.y, -500, 17)
-r("earth", -400, tigris.world_limits.min.y, 18)
-r("force", -400, tigris.world_limits.min.y, 18)
+r("blood", tigris.world_limits.max.y, -500, 22)
+r("mana", tigris.world_limits.max.y, -500, 22)
+r("earth", -400, tigris.world_limits.min.y, 23)
+r("force", -400, tigris.world_limits.min.y, 23)
 
 r("blood", tigris.world_limits.max.y, tigris.world_limits.min.y, 38)
 r("mana", tigris.world_limits.max.y, tigris.world_limits.min.y, 38)
