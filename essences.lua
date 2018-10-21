@@ -57,11 +57,13 @@ local function r(name, ymax, ymin, cube)
 end
 
 r("blood", tigris.world_limits.max.y, -500, 22)
-r("mana", tigris.world_limits.max.y, -500, 22)
-r("earth", -400, tigris.world_limits.min.y, 23)
-r("force", -400, tigris.world_limits.min.y, 23)
+r("blood", -500, tigris.world_limits.min.y, 30)
 
-r("blood", tigris.world_limits.max.y, tigris.world_limits.min.y, 38)
-r("mana", tigris.world_limits.max.y, tigris.world_limits.min.y, 38)
-r("earth", tigris.world_limits.max.y, tigris.world_limits.min.y, 39)
-r("force", tigris.world_limits.max.y, tigris.world_limits.min.y, 39)
+r("mana", tigris.world_limits.max.y, -500, 22)
+r("mana", -500, tigris.world_limits.min.y, 30)
+
+r("earth", -400, tigris.world_limits.min.y, 23)
+r("earth", tigris.world_limits.max.y, -400, 31)
+
+r("force", -400, tigris.world_limits.min.y, 23)
+r("force", tigris.world_limits.max.y, -400, 31)
