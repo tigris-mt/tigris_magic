@@ -4,7 +4,7 @@ tigris.magic.register_spell("tigris_magic:stone_arrow", {
     cost = {mana = 10},
     emblem = "attack",
     color = "#442",
-    overlay = "default_obsidian_shard.png",
+    overlay = "default_flint.png",
     on_use = function(itemstack, player, pointed_thing)
         tigris.create_projectile("tigris_magic:stone_arrow_projectile", {
             pos = vector.add(player:getpos(), vector.new(0, 1.4, 0)),

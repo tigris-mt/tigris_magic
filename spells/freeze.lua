@@ -45,4 +45,3 @@ minetest.register_craft({
         {"tigris_magic:mana_essence", "tigris_magic:force_essence", "tigris_magic:mana_essence"},
     },
 })
-
