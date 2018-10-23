@@ -4,7 +4,10 @@ local m = tigris.magic
 local c_max = tonumber(minetest.settings:get("tigris.magic.mana_max")) or 100
 local c_regen = tonumber(minetest.settings:get("tigris.magic.mana_regen")) or 1
 
-tigris.hud.register("tigris_magic:mana", {type = "bar", description = "Mana", texture = "tigris_magic_mana"})
+tigris.hud.register("tigris_magic:mana", {type = "bar", description = "Mana", texture = "tigris_magic_mana",
+    current = function(player) return m.mana(player) end,
+    max = function(player) return m.mana_max(player) end,
+})
 
 -- Access player mana.
 function m.mana(player, set, relative)
@@ -15,7 +18,7 @@ function m.mana(player, set, relative)
         set = math.max(0, math.min(set, m.mana_max(player)))
 
         player:get_meta():set_float("tigris_magic:mana", set)
-        tigris.hud.update(player, "tigris_magic:mana", {current = set, max = m.mana_max(player)})
+        tigris.hud.update(player, "tigris_magic:mana")
         return set
     else
         return player:get_meta():get_float("tigris_magic:mana")
