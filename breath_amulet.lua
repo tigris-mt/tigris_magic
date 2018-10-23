@@ -21,7 +21,6 @@ jewelry.register_action("breath", {
     end,
     apply = function(state, player)
         player:get_meta():set_int("tigris_magic:breath", state.breath and 1 or 0)
-        player:hud_set_flags{breathbar = not state.breath}
     end,
 })
 
