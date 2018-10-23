@@ -31,6 +31,8 @@ local function update(pos, force)
     return dest
 end
 
+local last_portal = {}
+
 minetest.register_node("tigris_magic:portal", {
     description = "Portal Base",
     tiles = {"tigris_magic_portal.png"},
@@ -47,8 +49,9 @@ minetest.register_node("tigris_magic:portal", {
         local dest = update(pos)
         if dest then
             for _,obj in ipairs(minetest.get_objects_inside_radius(pos, 4)) do
-                if vector.distance(vector.round(obj:getpos()), vector.add(pos, vector.new(0, 1, 0))) < 0.5 then
+                if (minetest.get_gametime() - (last_portal[obj] or 0) > 3) and vector.distance(vector.round(obj:getpos()), vector.add(pos, vector.new(0, 1, 0))) < 0.5 then
                     obj:setpos(vector.add(dest, vector.new(0, 1, 0)))
+                    last_portal[obj] = minetest.get_gametime()
                 end
             end
         end
