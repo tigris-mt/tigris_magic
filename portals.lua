@@ -88,9 +88,9 @@ minetest.register_node("tigris_magic:portal", {
 minetest.register_craft{
     output = "tigris_magic:portal",
     recipe = {
-        {"default:obsidian", "tigris_magic:twisted_essence", "default:obsidian"},
         {"default:obsidian", "tigris_magic:teleport", "default:obsidian"},
-        {"default:obsidian", "tigris_magic:twisted_essence", "default:obsidian"},
+        {"default:obsidian", "tigris_magic:teleport", "default:obsidian"},
+        {"default:obsidian", "tigris_magic:teleport", "default:obsidian"},
     },
 }
 
